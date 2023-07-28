@@ -1,0 +1,22 @@
+{
+  "name": "first-project-compass",
+  "version": "1.0.0",
+  "description": "A blog using HTML, CSS and TypeScript",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romulomoitinho/first-project-compass.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/romulomoitinho/first-project-compass/issues"
+  },
+  "homepage": "https://github.com/romulomoitinho/first-project-compass#readme",
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}
