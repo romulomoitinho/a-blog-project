@@ -1,10 +1,10 @@
 "use strict";
 //data array with each post
 const dataArray = [
-    { id: 1, title: 'The Future 1', body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took...", imageUrl: 'post_1.png' },
-    { id: 2, title: 'The Future 2', body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took...", imageUrl: 'post_1.png' },
-    { id: 3, title: 'The Future 3', body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took...", imageUrl: 'post_1.png' },
-    { id: 4, title: 'The Future 4', body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took...", imageUrl: 'post_1.png' },
+    { id: 1, title: 'The Future 1', body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took", imageUrl: 'post_1.png' },
+    { id: 2, title: 'The Future 2', body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took", imageUrl: 'post_1.png' },
+    { id: 3, title: 'The Future 3', body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took", imageUrl: 'post_1.png' },
+    { id: 4, title: 'The Future 4', body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took", imageUrl: 'post_1.png' },
     { id: 5, title: 'The Future 5', body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took...", imageUrl: 'post_1.png' },
     { id: 6, title: 'The Future 6', body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took...", imageUrl: 'post_1.png' }
 ];
@@ -35,7 +35,7 @@ function createPostCards() {
             //creating the p element to put de body
             const bodyElement = document.createElement('p');
             bodyElement.classList.add('summary-post');
-            bodyElement.textContent = data.body;
+            bodyElement.textContent = cropText(data.body, 180);
             //creating the footer element to put de 'Expand...'
             const footerElement = document.createElement('footer');
             footerElement.classList.add('expand-text-box');
@@ -51,6 +51,11 @@ function createPostCards() {
         }
     }
 }
+function createPostCardDetail() {
+    const postCardDetailElement = document.getElementById('post-view');
+    if (postCardDetailElement) {
+    }
+}
 function createComments() {
     //getting de section post element
     const commentSection = document.getElementById('comments-section');
@@ -59,17 +64,17 @@ function createComments() {
             //creating the div element
             const commentDivElement = document.createElement('div');
             commentDivElement.classList.add('comment');
-            //creating the p element to put de body
+            //creating the p elements to put in the div
             const userNameElement = document.createElement('p');
             userNameElement.classList.add('user-information');
             userNameElement.textContent = comment.userInformation.userName;
             const userEmailElement = document.createElement('p');
             userEmailElement.classList.add('user-information');
             userEmailElement.textContent = comment.userInformation.email;
-            //
             const userCommentElement = document.createElement('p');
             userCommentElement.classList.add('comment-text');
             userCommentElement.textContent = comment.body;
+            //creating the svg element to put in the div
             const svgCommentElement = `
             <svg width="654" height="2" viewBox="0 0 654 2" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0.996582 1H653.003" stroke="#575757" stroke-width="0.5" />
@@ -79,10 +84,25 @@ function createComments() {
             commentDivElement.appendChild(userEmailElement);
             commentDivElement.appendChild(userCommentElement);
             commentDivElement.innerHTML += svgCommentElement;
+            //inserting the div on the comment section
             commentSection.appendChild(commentDivElement);
         }
     }
 }
+function cropText(text, caracterLimit) {
+    //the text is small or the same size of the limit
+    if (text.length <= caracterLimit) {
+        return text;
+    }
+    else {
+        const croppedText = text.slice(0, caracterLimit);
+        // Verifica se o último caractere é espaço para não cortar uma palavra pela metade
+        const lastSpace = croppedText.lastIndexOf(' ');
+        const textoFinal = lastSpace > -1 ? croppedText.slice(0, lastSpace) : croppedText;
+        return textoFinal + '...';
+    }
+}
 createPostCards();
+//createPostCardDetail();
 createComments();
 //console.log(window.location.href.split('/')[3].split('?')[1]);
