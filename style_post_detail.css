@@ -130,14 +130,13 @@ section#comments-section {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     margin-block: 63px;
     margin-inline: 12px;
-    display: grid;
-    grid-template: repeat(4, 70px) / 1fr;
+    display: flex;
+    flex-direction: column;
     padding-block: 2%;
 }
 
 .comment p{
     display: inline;
-
 }
 
 section#comments-section div {
@@ -148,7 +147,7 @@ section#comments-section div {
     line-height: 20px;
     letter-spacing: 1.6px;
     padding-inline: 5%;
-    padding-block: 0;
+    padding-block-end: 3%;
 }
 
 section#comments-section div p.user-information {
@@ -157,5 +156,9 @@ section#comments-section div p.user-information {
     font-weight: 600;
     line-height: 20px; /* 125% */
     letter-spacing: 1.6px;
+}
+
+.noComments {
+    justify-self: center;
 }
 
