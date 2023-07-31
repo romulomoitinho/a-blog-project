@@ -10,7 +10,7 @@ function createPostCards() {
         for (let post of posts) {
         //creating the anchor for the card
         const anchorCardElement = document.createElement('a')
-        anchorCardElement.href = `${window.location.href}detail_page.html?id=${post.id}`
+        anchorCardElement.href = `${window.location.href.split('/')[0]}detail_page.html?id=${post.id}`
 
         //creating the div element
         const postCardElement = document.createElement('div');
