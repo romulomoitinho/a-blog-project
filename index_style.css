@@ -39,7 +39,7 @@ header p {
 
 main {
     margin-inline: 5%;
-    margin-block-start: 3%;
+    margin-block: 3%;
 }
 
 main div#the-title-posts{
@@ -74,18 +74,20 @@ svg {
 }
 
 section#post-section {
-    margin-block-start: 4%;
     display: grid;
     grid-template: repeat(2, 1fr) / repeat(3, 1fr);
     grid-gap: 50px;
 }
 a {
     text-decoration: none;
+    margin: 0;
 }
 .post {
     width: 350px;
-    height: 430px;
-    flex-shrink: 0;
+    height: auto;
+    padding-block-end: 1%;
+    padding-inline: 0px;
+    margin-inline: 0px;
     border-radius: 8px;
     background: var(--white, #FFF);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
