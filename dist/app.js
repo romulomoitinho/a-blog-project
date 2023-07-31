@@ -1,39 +1,13 @@
-"use strict";
-//data array with each post
-const postData = [
-    { id: 1, title: 'The Future 1', body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took", imageUrl: 'post_1.png' },
-    { id: 2, title: 'The Future 2', body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took", imageUrl: 'post_1.png' },
-    { id: 3, title: 'The Future 3', body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took", imageUrl: 'post_1.png' },
-    { id: 4, title: 'The Future 4', body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took", imageUrl: 'post_1.png' },
-    { id: 5, title: 'The Future 5', body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took ", imageUrl: 'post_1.png' },
-    { id: 6, title: 'The Future 6', body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took...", imageUrl: 'post_1.png' }
-];
-const commentData = [
-    { id: 1, postId: 1, body: 'Muy bueno!', userInformation: { userName: "usuario_1", email: 'example1@email.com' } },
-    { id: 2, postId: 1, body: 'Trés bien!', userInformation: { userName: "usuario_2", email: 'example2@email.com' } },
-    { id: 3, postId: 1, body: 'Very Good!', userInformation: { userName: "usuario_4", email: 'example4@email.com' } },
-    { id: 4, postId: 1, body: 'Excelente!', userInformation: { userName: "usuario_5", email: 'example5@email.com' } },
-    { id: 5, postId: 1, body: 'Fantastic!', userInformation: { userName: "usuario_6", email: 'example6@email.com' } },
-    { id: 6, postId: 2, body: 'Increíble!', userInformation: { userName: "usuario_10", email: 'example10@email.com' } },
-    { id: 7, postId: 2, body: 'Extraordinaire!', userInformation: { userName: "usuario_2", email: 'example2@email.com' } },
-    { id: 8, postId: 2, body: 'Fantástico!', userInformation: { userName: "usuario_3", email: 'example3@email.com' } },
-    { id: 9, postId: 4, body: 'Amazing!', userInformation: { userName: "usuario_4", email: 'example4@email.com' } },
-    { id: 10, postId: 4, body: 'Fantástico!', userInformation: { userName: "usuario_5", email: 'example5@email.com' } },
-    { id: 11, postId: 4, body: 'Maravilloso!', userInformation: { userName: "usuario_8", email: 'example8@email.com' } },
-    { id: 12, postId: 4, body: 'Extraordinário!', userInformation: { userName: "usuario_4", email: 'example4@email.com' } },
-    { id: 13, postId: 5, body: 'Très bien!', userInformation: { userName: "usuario_7", email: 'example7@email.com' } },
-    { id: 14, postId: 6, body: 'Incrível!', userInformation: { userName: "usuario_9", email: 'example9@email.com' } },
-    { id: 15, postId: 6, body: 'Fantástico!', userInformation: { userName: "usuario_6", email: 'example6@email.com' } }
-];
+import { posts, comments } from "./data.js";
 //a fuction to create dinamically div (card post) elements
 function createPostCards() {
     //getting de section post element
     const postSection = document.getElementById('post-section');
     if (postSection) {
-        for (let post of postData) {
+        for (let post of posts) {
             //creating the anchor for the card
             const anchorCardElement = document.createElement('a');
-            anchorCardElement.href = `http://127.0.0.1:5501/detail_page.html?id=${post.id}`;
+            anchorCardElement.href = `${window.location.href}detail_page.html?id=${post.id}`;
             //creating the div element
             const postCardElement = document.createElement('div');
             postCardElement.classList.add('post');
@@ -67,7 +41,7 @@ function createPostCardDetail() {
     const postCardDetailElement = document.getElementById('post-detail');
     if (postCardDetailElement) {
         const idToDiscover = window.location.href.split('?id=')[1];
-        const postObject = postData.find((post) => `${post.id}` === idToDiscover);
+        const postObject = posts.find((post) => `${post.id}` === idToDiscover);
         if (postObject) {
             //creating the div container
             const divPostDetail = document.createElement('div');
@@ -95,7 +69,7 @@ function createComments() {
     const commentSection = document.getElementById('comments-section');
     if (commentSection) {
         const idToDiscover = window.location.href.split('?id=')[1];
-        const commentObjects = commentData.filter((comment) => `${comment.postId}` === idToDiscover);
+        const commentObjects = comments.filter((comment) => `${comment.postId}` === idToDiscover);
         if (commentObjects.length > 0) {
             for (let comment of commentObjects) {
                 //creating the div element
